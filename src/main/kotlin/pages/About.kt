@@ -92,7 +92,7 @@ suspend fun buildAboutPage(environment: Environment) {
                                 text = "#AndroidDev",
                                 customAttributes = mapOf("target" to "_blank"),
                             )
-                            text(" since Android 2.3 (Gingerbread). Kotlin enthusiast since the 1.0 of the language.")
+                            text(" since Android 2.3 (Gingerbread). Kotlin enthusiast since the 1.0 of the language. ")
                             text("I love the Android community and so glad to be the part of it. " +
                                     "I am currently working as lead of Android team at ")
                             a(
@@ -100,6 +100,7 @@ suspend fun buildAboutPage(environment: Environment) {
                                 text = "AppStation",
                                 customAttributes = mapOf("target" to "_blank"),
                             )
+                            text(".")
                         }
                         p {
                             text("A few things I enjoy: ")
