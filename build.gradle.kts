@@ -5,7 +5,7 @@ plugins {
     application
 }
 
-group = "org.example"
+group = "com.droidista"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -28,7 +28,13 @@ tasks.test {
 }
 
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
 
 application {

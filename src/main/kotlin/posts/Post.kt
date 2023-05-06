@@ -3,12 +3,13 @@ package posts
 import com.katalyst.dom.BodyContext
 import com.katalyst.dom.document
 import com.katalyst.environment.Environment
+import com.katalyst.extension.formattedTime
 import components.includeSiteFooter
 import components.includeSiteHead
 import components.includeSiteHeader
 import java.io.File
 import java.time.Instant
-import java.time.format.DateTimeFormatter
+import java.time.ZoneId
 import java.time.format.FormatStyle
 import java.util.*
 
@@ -17,14 +18,14 @@ data class Post(
     val shortDescription: String,
     val imagePath: String,
     val authorName: String,
-    val publishedDateEpochSeconds: Long,
+    val publishedDateEpochMillis: Long,
     val slug: String,
     val content: BodyContext.() -> Unit,
 ) {
     fun getTargetFile(environment: Environment): File {
         val postsDir = environment.ensurePostsDirectory()
-        val date = Instant.ofEpochSecond(publishedDateEpochSeconds)
-            .atOffset(getAuthorTimeZoneOffset())
+        val date = Instant.ofEpochMilli(publishedDateEpochMillis)
+            .atZone(ZoneId.of("GMT+05:30"))
         val yearDir = File(postsDir, String.format(Locale.US, "%04d", date.year))
         if (!yearDir.exists()) yearDir.mkdir()
         val monthDir = File(yearDir, String.format(Locale.US, "%02d", date.monthValue))
@@ -48,17 +49,12 @@ data class Post(
                     includeSiteHeader()
                     main {
                         h1(text = title, customAttributes = mapOf("style" to "margin-bottom: 0;"))
-                        val zonedTime = Instant.ofEpochSecond(publishedDateEpochSeconds)
-                            .atZone(getAuthorTimeZoneOffset())
-                        val isoFormattedTime = zonedTime.format(DateTimeFormatter.ISO_DATE_TIME)
-                        val humanFormattedTime =
-                            zonedTime.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
                         span(className = "article-date") {
                             text("Published ")
-                            textContainer(
-                                tag = "time",
-                                text = humanFormattedTime,
-                                customAttributes = mapOf("datetime" to isoFormattedTime),
+                            formattedTime(
+                                epochMillis = publishedDateEpochMillis,
+                                dateFormat = FormatStyle.FULL,
+                                timeFormat = null,
                             )
                             text(" by ")
                             text(authorName)

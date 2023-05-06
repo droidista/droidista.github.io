@@ -2,13 +2,13 @@ package pages
 
 import com.katalyst.dom.document
 import com.katalyst.environment.Environment
+import com.katalyst.extension.formattedTime
 import components.includeSiteFooter
 import components.includeSiteHead
 import components.includeSiteHeader
 import posts.getAllPosts
-import posts.getAuthorTimeZoneOffset
 import java.time.Instant
-import java.time.format.DateTimeFormatter
+import java.time.ZoneId
 import java.time.format.FormatStyle
 
 suspend fun buildArchivePage(environment: Environment) {
@@ -27,32 +27,27 @@ suspend fun buildArchivePage(environment: Environment) {
                     val posts = getAllPosts()
                     val years = mutableSetOf<Int>()
                     posts.mapTo(years) {
-                        Instant.ofEpochSecond(it.publishedDateEpochSeconds)
-                            .atOffset(getAuthorTimeZoneOffset())
+                        Instant.ofEpochMilli(it.publishedDateEpochMillis)
+                            .atZone(ZoneId.of("GMT+05:30"))
                             .year
                     }
                     years.sortedDescending().forEach { year ->
                         val allPostsOfYear = posts.filter {
-                            Instant.ofEpochSecond(it.publishedDateEpochSeconds)
-                                .atOffset(getAuthorTimeZoneOffset())
+                            Instant.ofEpochMilli(it.publishedDateEpochMillis)
+                                .atZone(ZoneId.of("GMT+05:30"))
                                 .year == year
-                        }.sortedByDescending { it.publishedDateEpochSeconds }
+                        }.sortedByDescending { it.publishedDateEpochMillis }
                         h2(text = year.toString())
                         ul {
                             allPostsOfYear.forEach { post ->
                                 li {
-                                    val zonedTime = Instant.ofEpochSecond(post.publishedDateEpochSeconds)
-                                        .atZone(getAuthorTimeZoneOffset())
-                                    val isoFormattedTime = zonedTime.format(DateTimeFormatter.ISO_DATE_TIME)
-                                    val humanFormattedTime =
-                                        zonedTime.format(DateTimeFormatter.ofPattern("MMM dd"))
                                     a(href = post.getRelativePath(environment), text = post.title)
                                     text(" ")
-                                    textContainer(
-                                        tag = "time",
-                                        text = humanFormattedTime,
+                                    formattedTime(
+                                        epochMillis = post.publishedDateEpochMillis,
+                                        timeZoneId = ZoneId.of("GMT+05:30"),
+                                        pattern = "EEEE, dd MMMM",
                                         customAttributes = mapOf(
-                                            "datetime" to isoFormattedTime,
                                             "style" to "color: var(--secondary-text-color); font-size: 0.8em;"
                                         ),
                                     )
