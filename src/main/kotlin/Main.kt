@@ -3,6 +3,7 @@ import com.katalyst.environment.clean
 import com.katalyst.environment.copyStaticAssets
 import pages.buildAboutPage
 import pages.buildArchivePage
+import pages.buildError404Page
 import pages.buildIndexPage
 import posts.getAllPosts
 import java.io.File
@@ -18,6 +19,7 @@ suspend fun main() {
     buildIndexPage(environment)
     buildArchivePage(environment)
     buildAboutPage(environment)
+    buildError404Page(environment)
     getAllPosts().forEach { post ->
         post.render(environment)
     }

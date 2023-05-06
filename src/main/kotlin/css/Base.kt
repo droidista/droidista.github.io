@@ -7,6 +7,24 @@ private const val WIDTH_BREAKPOINT = 44
 val baseCss = listOf(
     CssDefinition(
         matchers = listOf(
+            ClassName("display-light-only")
+        ),
+        declarations = mapOf(
+            "display" to "var(--btn-switch-dark-display)",
+        ),
+        depends = listOf(":root")
+    ),
+    CssDefinition(
+        matchers = listOf(
+            ClassName("display-dark-only")
+        ),
+        declarations = mapOf(
+            "display" to "var(--btn-switch-light-display)",
+        ),
+        depends = listOf(":root")
+    ),
+    CssDefinition(
+        matchers = listOf(
             Id("btn-switch-dark"),
         ),
         declarations = mapOf(
