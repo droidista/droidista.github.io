@@ -17,13 +17,6 @@ private data class ContactInfo(
 suspend fun buildAboutPage(environment: Environment) {
     val contact = listOf(
         ContactInfo(
-            title = "Twitter",
-            url = "https://twitter.com/droidista",
-            hyperlink = {
-                text("@droidista")
-            }
-        ),
-        ContactInfo(
             title = "Mastodon",
             url = "https://mastodon.social/@anandbose",
             hyperlink = {
@@ -31,24 +24,24 @@ suspend fun buildAboutPage(environment: Environment) {
             }
         ),
         ContactInfo(
-            title = "Reddit",
-            url = "https://reddit.com/u/anand_bose",
+            title = "Pixelfed",
+            url = "https://pixelfed.social/anandbose",
             hyperlink = {
-                text("u/anand_bose")
+                text("@anandbose@pixelfed.social")
             }
         ),
         ContactInfo(
-            title = "Github",
+            title = "GitHub",
             url = "https://github.com/droidista",
             hyperlink = {
                 text("@droidista")
             }
         ),
         ContactInfo(
-            title = "Instagram",
-            url = "https://instagram.com/anandbose16",
+            title = "Gitlab",
+            url = "https://gitlab.com/anandbose",
             hyperlink = {
-                text("@anandbose16")
+                text("@anandbose")
             }
         ),
         ContactInfo(
@@ -62,7 +55,7 @@ suspend fun buildAboutPage(environment: Environment) {
             title = "GPG Key",
             url = "/gpg-key.txt",
             hyperlink = {
-                text("222CA765E222EEB0DE97D5F184D8981E1D251B65")
+                text("Download")
             }
         ),
     )
@@ -108,6 +101,7 @@ suspend fun buildAboutPage(environment: Environment) {
                                 li("Discovering more Android stuffs (Jetpack Compose)")
                                 li("Writing and talking tech")
                                 li("Having fun times with family")
+                                li("Photography")
                                 li("Cycling")
                             }
                         }
