@@ -297,4 +297,13 @@ val baseCss = listOf(
             "color" to "#BCBEC4",
         ),
     ),
+    CssDefinition(
+        matchers = listOf(
+            ClassName("full-width-image")
+        ),
+        declarations = mapOf(
+            "width" to "100%",
+            "height" to "auto",
+        ),
+    ),
 )

@@ -41,6 +41,7 @@ fun buildAndroidKeystoreRotation08May2020() = Post(
     p("The introduction of key rotation have minor impact around the developers for now, and most of us don’t really care about it. But the cryptographic advancements over the APK siging schemes from v1 to v4 is appreciable. The APK signing scheme v2 detects the tampering of zip central directory, and also improve the speed of installation. V3 introduced key rotation and the ability to sign with multiple keystores. The preview V4 scheme produces a new kind of signature in a separate file (apk-name.apk.idsig). This scheme supports ADB incremental APK installation, which speeds up APK install.")
     p("For better understanding, here is an illustrative example.")
     responsiveImage(
+        className = "full-width-image",
         src = "/posts/2020/05/08/android-signing-key-rotation-explained/key_rotation.jpg",
         width = 800,
         height = 800,
