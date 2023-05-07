@@ -11,7 +11,7 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     maven {
-        url = uri("https://droidista.github.io/Katalyst/maven")
+        url = uri("https://katalyst.pages.dev/maven")
     }
 }
 

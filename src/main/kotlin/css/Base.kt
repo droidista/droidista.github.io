@@ -1,6 +1,7 @@
 package css
 
 import com.katalyst.css.*
+import com.katalyst.highlighter.kotlin.css.colorBackground
 
 private const val WIDTH_BREAKPOINT = 44
 
@@ -284,6 +285,16 @@ val baseCss = listOf(
         declarations = mapOf(
             "display" to "block",
             "padding" to "0.2em 2em",
+        ),
+    ),
+    CssDefinition(
+        matchers = listOf(
+            ClassName("code-block")
+        ),
+        declarations = mapOf(
+            "background" to colorBackground,
+            "padding" to "0.5em",
+            "color" to "#BCBEC4",
         ),
     ),
 )

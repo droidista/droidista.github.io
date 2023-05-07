@@ -7,6 +7,7 @@ import com.katalyst.extension.formattedTime
 import components.includeSiteFooter
 import components.includeSiteHead
 import components.includeSiteHeader
+import posts.y2020.may.buildAndroidKeystoreRotation08May2020
 import java.io.File
 import java.time.Instant
 import java.time.ZoneId
@@ -32,7 +33,9 @@ data class Post(
         if (!monthDir.exists()) monthDir.mkdir()
         val dayOfMonthDir = File(monthDir, String.format(Locale.US, "%02d", date.dayOfMonth))
         if (!dayOfMonthDir.exists()) dayOfMonthDir.mkdir()
-        return File(dayOfMonthDir, String.format(Locale.US, "%s.html", slug))
+        val slugDir = File(dayOfMonthDir, slug)
+        if (!slugDir.exists()) slugDir.mkdir()
+        return File(slugDir, "index.html")
     }
 
     fun getRelativePath(environment: Environment): String {
@@ -78,13 +81,3 @@ fun Environment.ensurePostsDirectory(): File {
     }
     return postsDir
 }
-
-fun getAllPosts() = listOf(
-    testPost20230505,
-    testPost20230504,
-    testPost20230503,
-    testPost20230502,
-    testPost20230501,
-    testPost20230429,
-    testPost20230428,
-)
