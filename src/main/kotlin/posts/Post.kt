@@ -58,6 +58,7 @@ data class Post(
                                 epochMillis = publishedDateEpochMillis,
                                 dateFormat = FormatStyle.FULL,
                                 timeFormat = null,
+                                timeZoneId = ZoneId.of("GMT+05:30")
                             )
                             text(" by ")
                             text(authorName)
