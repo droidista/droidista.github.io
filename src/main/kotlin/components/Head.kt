@@ -36,9 +36,6 @@ fun HtmlContext.includeSiteHead(title: String, description: String, imagePath: S
         meta(name = "twitter:creator", content = "@droidista")
         meta(name = "twitter:site", content = "@droidista")
 
-        link(rel = "stylesheet", href = "/styles/fonts/jetbrains-mono/fonts-jetbrains-mono.css")
-        link(rel = "stylesheet", href = "/styles/fonts/inter/inter.css")
-
         deferred(InlineStyleGenerator(css))
 
         link(rel = "apple-touch-icon", sizes = "57x57", href = "/apple-icon-57x57.png")
