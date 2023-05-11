@@ -177,7 +177,7 @@ val jetBrainsMonoFontsCss = listOf(
             "font-weight" to "100 900",
             "font-display" to "swap",
             "font-named-instance" to "'Regular'",
-            "src" to "url(/styles/fonts/jetbrains-mono/JetBrainsMono[wght].woff2) format('woff2)"
+            "src" to "url(\"/styles/fonts/jetbrains-mono/JetBrainsMono[wght].woff2\") format(\"woff2\")"
         ),
         dependencyTag = "JetBrains Mono",
         preloadList = listOf(
@@ -196,7 +196,7 @@ val jetBrainsMonoFontsCss = listOf(
             "font-weight" to "100 900",
             "font-display" to "swap",
             "font-named-instance" to "'Italic'",
-            "src" to "url(/styles/fonts/jetbrains-mono/JetBrainsMono-Italic[wght].woff2) format('woff2)"
+            "src" to "url(\"/styles/fonts/jetbrains-mono/JetBrainsMono-Italic[wght].woff2\") format(\"woff2\")"
         ),
         dependencyTag = "JetBrains Mono",
         preloadList = listOf(
