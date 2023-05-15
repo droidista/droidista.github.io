@@ -4,22 +4,18 @@ import com.katalyst.dom.BodyContext
 
 fun BodyContext.includeSiteFooter() {
     footer {
-        text("&copy;2023 Anand Bose. All rights reserved.")
-        br()
-        a(href = "https://github.com/droidista", text = "GitHub")
-        text(" ")
-        a(href = "https://gitlab.com/anandbose", text = "Gitlab")
-        text(" ")
-        a(
-            href = "https://mastodon.social/@anandbose",
-            text = "Mastodon",
-            customAttributes = mapOf("rel" to "me"),
-        )
-        text(" ")
-        a(
-            href = "https://pixelfed.social/@anandbose",
-            text = "Pixelfed",
-            customAttributes = mapOf("rel" to "me"),
-        )
+        span {
+            text("Made with ❤ by ")
+            a(
+                href = "https://mastodon.social/@anandbose",
+                text = "Anand Bose",
+                customAttributes = mapOf("rel" to "me"),
+            )
+            text(". Content on this site is licensed under ")
+            a(
+                href = "https://creativecommons.org/licenses/by-sa/4.0/",
+                text = "CC BY-SA 4.0"
+            )
+        }
     }
 }
