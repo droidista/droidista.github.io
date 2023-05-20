@@ -3,6 +3,7 @@ package pages
 import com.katalyst.dom.BodyContext
 import com.katalyst.dom.document
 import com.katalyst.environment.Environment
+import com.katalyst.responsiveimage.ResponsiveImageFormat
 import com.katalyst.responsiveimage.responsiveImage
 import components.includeSiteFooter
 import components.includeSiteHead
@@ -74,7 +75,15 @@ suspend fun buildAboutPage(environment: Environment) {
                             src = "/about.png",
                             width = 192,
                             height = 192,
-                            customAttributes = mapOf("style" to "display: block; margin: 3em auto 1em auto;"),
+                            scaleModes = listOf(1f, 2f, 3f),
+                            imageFormats = listOf(
+                                ResponsiveImageFormat.AVIF,
+                                ResponsiveImageFormat.PNG,
+                                ResponsiveImageFormat.WEBP,
+                            ),
+                            customAttributes = mapOf(
+                                "style" to "display: block; margin: 3em auto 1em auto;"
+                            ),
                         )
                         h2("Anand Bose", customAttributes = mapOf("style" to "text-align: center;"))
                         h2("Hello! \uD83D\uDC4B")
