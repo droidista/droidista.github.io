@@ -25,31 +25,10 @@ suspend fun buildAboutPage(environment: Environment) {
             }
         ),
         ContactInfo(
-            title = "Pixelfed",
-            url = "https://pixelfed.social/anandbose",
-            hyperlink = {
-                text("@anandbose@pixelfed.social")
-            }
-        ),
-        ContactInfo(
             title = "GitHub",
             url = "https://github.com/droidista",
             hyperlink = {
                 text("@droidista")
-            }
-        ),
-        ContactInfo(
-            title = "Gitlab",
-            url = "https://gitlab.com/anandbose",
-            hyperlink = {
-                text("@anandbose")
-            }
-        ),
-        ContactInfo(
-            title = "Email",
-            url = "mailto:anandbose16@gmail.com",
-            hyperlink = {
-                text("anandbose16@gmail.com")
             }
         ),
         ContactInfo(
